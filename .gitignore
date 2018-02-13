@@ -1,7 +1,7 @@
 /target/
-
 .project
 .classpath
 .settings/*
 .idea/*
 out/
+irc--client.iml
