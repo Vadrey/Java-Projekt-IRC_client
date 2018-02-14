@@ -18,9 +18,6 @@ public class ServerSender extends Thread {
         sendMsg();
         command = "USER testbot 0 * : Wasyli";
         sendMsg();
-        command = "JOIN #wfmi";
-        sendMsg();
-        command = null;
     }
 
     void sendMsg() {
