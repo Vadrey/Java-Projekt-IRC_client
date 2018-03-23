@@ -88,7 +88,7 @@ e1.printStackTrace();
 
 @Override
 public void onNewUser(String user) {
-// Leśminku tu uaktualnij tą dataUzytkownicy
+//To do : update dataUzytkownicy
 }
 });
          String user = "Uzytkownik  A";
@@ -136,8 +136,7 @@ server.registerMessageListener(new IServerMessageListener() {
 
 @Override
 public void onMessage(String userName, String message) {
-// Leśmin tu dostajesz wiadomość którą masz wyświetlić.
-// dodawaj to do dataWiadomosci
+
 }
 });
          String [][]dataWiadomosci = new String[][] { new String[] {"Uzytkownik A", "elo"},
