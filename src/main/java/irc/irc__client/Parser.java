@@ -1,4 +1,4 @@
-package irc.irc__client.utils;
+package irc.irc__client;
 
 /**
  * Created by Czarek on 2018-02-24.

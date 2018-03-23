@@ -1,19 +1,17 @@
 package irc.irc__client;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.Socket;
 
-import javax.swing.*;
-
 public class LoginWindow {
 
-
-    private String Nazwa;
-    private String Serwer;
-    private String Port;
+    private String nazwa;
+    private String serwer;
+    private String port;
 
     JPanel pnPanel0;
     ButtonGroup rbgPanel0;
@@ -58,27 +56,23 @@ public class LoginWindow {
         pnPanel0.add( tbtTglBut0 );
         tbtTglBut0.addActionListener(new ActionListener() {
 
+            @Override
             public void actionPerformed(ActionEvent e) {
                 JToggleButton tBtn = (JToggleButton)e.getSource();
                 if (tBtn.isSelected()) {
                     //Akcje kiedy wcisniemy przycisk
-                    Socket s = null;
-
-                    Nazwa = tfNazwa.getText();
-                    Serwer = tfSerwer.getText();
-                    Port = tfPort.getText();
+                    nazwa = tfNazwa.getText();
+                    serwer = tfSerwer.getText();
+                    port = tfPort.getText();
 
                     try {
+                        Socket s = new Socket(getSerwer(), Integer.parseInt(getPort()));
 
-                        s = new Socket(getSerwer(), Integer.parseInt(getPort()));
-
-                        Thread listener = new ServerListener(s);
-                        listener.start();
-
-                        Thread sender = new ServerSender(s);
-                        sender.start();
+                        ServerListener server = new ServerListener(s);
+                        server.addLoggedUser(nazwa);
+                        new Chat(nazwa, server);
                     } catch (IOException ex) {
-                        ex.printStackTrace();
+                        throw new RuntimeException(ex);
                     }
 
                 }
@@ -180,15 +174,15 @@ public class LoginWindow {
     }
 
     public String getNazwa() {
-        return Nazwa;
+        return nazwa;
     }
 
     public String getSerwer() {
-        return Serwer;
+        return serwer;
     }
 
     public String getPort() {
-        return Port;
+        return port;
     }
 
 

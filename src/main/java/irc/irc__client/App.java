@@ -3,8 +3,6 @@ package irc.irc__client;
 
 import java.io.IOException;
 
-import irc.irc__client.utils.Parser;
-
 
 /**
  * Hello world!
